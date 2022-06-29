@@ -1,6 +1,8 @@
 package com.dgioto.draganddraw
 
 import android.content.Context
+import android.graphics.Canvas
+import android.graphics.Paint
 import android.graphics.PointF
 import android.util.AttributeSet
 import android.util.Log
@@ -15,6 +17,23 @@ class BoxDrawingView(context: Context, attrs: AttributeSet? = null) :
 
     private var currentBox: Box? = null
     private val boxen = mutableListOf<Box>()
+
+    //Создание объектов Paint
+    private val boxPaint = Paint().apply {
+        color = 0x22ff0000.toInt()
+    }
+    private val backgroundPaint = Paint().apply {
+        color = 0xfff8efe0.toInt()
+    }
+
+    //Переопределение onDraw(Canvas)
+    override fun onDraw(canvas: Canvas) {
+        // Заполнение фона
+        canvas.drawPaint(backgroundPaint)
+        boxen.forEach { box ->
+            canvas.drawRect(box.left, box.top, box.right, box.bottom, boxPaint)
+        }
+    }
 
     //Реализация BoxDrawingView
     override fun onTouchEvent(event: MotionEvent): Boolean {
