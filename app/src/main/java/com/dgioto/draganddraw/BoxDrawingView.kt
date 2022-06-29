@@ -18,7 +18,7 @@ class BoxDrawingView(context: Context, attrs: AttributeSet? = null) :
     private var currentBox: Box? = null
     private val boxen = mutableListOf<Box>()
 
-    //Создание объектов Paint
+    //Создание объектов Paint (указывает чем и как рисовать)
     private val boxPaint = Paint().apply {
         color = 0x22ff0000.toInt()
     }
@@ -26,7 +26,7 @@ class BoxDrawingView(context: Context, attrs: AttributeSet? = null) :
         color = 0xfff8efe0.toInt()
     }
 
-    //Переопределение onDraw(Canvas)
+    //Переопределение onDraw(Canvas) (указывает что рисовать, круги квадраты ....)
     override fun onDraw(canvas: Canvas) {
         // Заполнение фона
         canvas.drawPaint(backgroundPaint)
